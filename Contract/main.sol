@@ -1,17 +1,3 @@
-// SPDX-License-Identifier: MIT
-
-// Amended by HashLips
-/**
-    !Disclaimer!
-    These contracts have been used to create tutorials,
-    and was created for the purpose to teach people
-    how to create smart contracts on the blockchain.
-    please review this code on your own before using any of
-    the following code for production.
-    HashLips will not be liable in any way if for the use 
-    of the code. That being said, the code has been tested 
-    to the best of the developers' knowledge to work as intended.
-*/
 
 // File: @openzeppelin/contracts/utils/introspection/IERC165.sol
 pragma solidity ^0.8.0;
@@ -1263,22 +1249,26 @@ contract NFT is ERC721Enumerable, Ownable {
   // public
   function mint(uint256 _mintAmount) public payable {
     uint256 supply = totalSupply();
-    if (supply < 100) {
-        uint256 tokenCount = balanceOf(msg.sender);
-        require(tokenCount < freeMaxAmount);
-    }
-    if (supply == 10) cost = 2 ether;
+
+    if (supply > 550) cost = 2 ether;
+    if (supply == 2550) cost = 4 ether;
+    if (supply == 4050) cost = 6 ether;
+
     require(!paused);
     require(_mintAmount > 0);
     require(_mintAmount <= maxMintAmount);
     require(supply + _mintAmount <= maxSupply);
     
     if (msg.sender != owner()) {
-      require(msg.value >= cost * _mintAmount);
+        if (supply < 100) {
+            uint256 tokenCount = balanceOf(msg.sender);
+            require(tokenCount < freeMaxAmount);
+        }
+        require(msg.value >= cost * _mintAmount);
     }
 
     for (uint256 i = 1; i <= _mintAmount; i++) {
-      _safeMint(msg.sender, supply + i);
+        _safeMint(msg.sender, supply + i);
     }
   }
 
@@ -1307,10 +1297,6 @@ contract NFT is ERC721Enumerable, Ownable {
       "ERC721Metadata: URI query for nonexistent token"
     );
     
-    // if(revealed == false) {
-    //     return notRevealedUri;
-    // }
-
     string memory currentBaseURI = _baseURI();
     return bytes(currentBaseURI).length > 0
         ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), baseExtension))
@@ -1352,18 +1338,7 @@ contract NFT is ERC721Enumerable, Ownable {
   }
  
   function withdraw() public payable onlyOwner {
-    // This will pay HashLips 5% of the initial sale.
-    // You can remove this if you want, or keep it in to support HashLips and his channel.
-    // =============================================================================
-    (bool hs, ) = payable(0xD59bcb64A7F3cd8C6B869117e8adbF759111E475).call{value: address(this).balance * 15 / 100}("");
-    require(hs);
-    // =============================================================================
-    
-    // This will payout the owner 95% of the contract balance.
-    // Do not remove this otherwise you will not be able to withdraw the funds.
-    // =============================================================================
     (bool os, ) = payable(owner()).call{value: address(this).balance}("");
     require(os);
-    // =============================================================================
   }
 }

@@ -6,13 +6,13 @@
     "SYMBOL": "ETH",
     "ID": 4
   },
-  "NFT_NAME": "AAA Pass Test",
-  "SYMBOL": "AAATEST",
-  "MAX_SUPPLY": 10,
-  "WEI_COST": 1000000000000000,
-  "DISPLAY_COST": 0.001,
+  "NFT_NAME": "EKD AAA Pass",
+  "SYMBOL": "EAP",
+  "MAX_SUPPLY": 5050,
+  "WEI_COST": 0,
+  "DISPLAY_COST": 0,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://opensea.io/collection/ekd-aaa-pass-test",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/ekd-aaa-pass",
   "SHOW_BACKGROUND": false
 }

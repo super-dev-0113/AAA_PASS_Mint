@@ -96,12 +96,26 @@ export const StyledLink = styled.a`
 `;
 
 function App() {
+  
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
+  
+  let display_cost = 0;
+
+  if (data.totalSupply > 550) display_cost = 2;
+  if (data.totalSupply > 2550) display_cost = 4;
+  if (data.totalSupply > 4050) display_cost = 6;
+
+  let mint_cost = 0;
+
+  if (data.totalSupply > 10) mint_cost = 2000000000000000000;
+  if (data.totalSupply > 20) mint_cost = 4000000000000000000;
+  if (data.totalSupply > 30) mint_cost = 6000000000000000000;
+
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -122,7 +136,7 @@ function App() {
   });
 
   const claimNFTs = () => {
-    let cost = CONFIG.WEI_COST;
+    let cost = mint_cost;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
@@ -264,7 +278,7 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
+                  1 {CONFIG.SYMBOL} costs {display_cost}{" "}
                   {CONFIG.NETWORK.SYMBOL}.
                 </s.TextTitle>
                 <s.SpacerXSmall />
