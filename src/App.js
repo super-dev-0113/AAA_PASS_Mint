@@ -105,16 +105,23 @@ function App() {
   const [mintAmount, setMintAmount] = useState(1);
   
   let display_cost = 0;
-
-  if (data.totalSupply > 550) display_cost = 2;
-  if (data.totalSupply > 2550) display_cost = 4;
-  if (data.totalSupply > 4050) display_cost = 6;
-
+  let max_per_mint = 3;
   let mint_cost = 0;
 
-  if (data.totalSupply > 10) mint_cost = 2000000000000000000;
-  if (data.totalSupply > 20) mint_cost = 4000000000000000000;
-  if (data.totalSupply > 30) mint_cost = 6000000000000000000;
+  
+  if (data.totalSupply > 550) {
+    display_cost = 2;
+    max_per_mint = 10;
+    mint_cost = 2000000000000000000;
+  }
+  if (data.totalSupply > 2050) {
+    display_cost = 3;
+    mint_cost = 3000000000000000000;
+  }
+  if (data.totalSupply > 4550) {
+    display_cost = 4;
+    mint_cost = 4000000000000000000;
+  }
 
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -177,8 +184,8 @@ function App() {
 
   const incrementMintAmount = () => {
     let newMintAmount = mintAmount + 1;
-    if (newMintAmount > 10) {
-      newMintAmount = 10;
+    if (newMintAmount > max_per_mint) {
+      newMintAmount = max_per_mint;
     }
     setMintAmount(newMintAmount);
   };

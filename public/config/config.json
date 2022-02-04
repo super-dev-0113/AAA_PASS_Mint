@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0xCd09A89594D1713De5906033104787c3cA9FD8b8",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xCd09A89594D1713De5906033104787c3cA9FD8b8",
+  "CONTRACT_ADDRESS": "0x1e9b593fee3a1886701da6b13fbe24797e76af77",
+  "SCAN_LINK": "https://polygonscan.com/address/0x1e9b593fee3a1886701da6b13fbe24797e76af77",
   "NETWORK": {
-    "NAME": "Rinkerby",
-    "SYMBOL": "ETH",
-    "ID": 4
+    "NAME": "Polygon",
+    "SYMBOL": "MATIC",
+    "ID": 137
   },
-  "NFT_NAME": "EKD AAA Pass",
-  "SYMBOL": "EAP",
+  "NFT_NAME": "AAA_pass",
+  "SYMBOL": "AAA_Pass",
   "MAX_SUPPLY": 5050,
   "WEI_COST": 0,
   "DISPLAY_COST": 0,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://opensea.io/collection/ekd-aaa-pass",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/elliotkiddanger-aaa-pass",
   "SHOW_BACKGROUND": false
 }
