@@ -1263,7 +1263,7 @@ contract NFT is ERC721Enumerable, Ownable {
         require(_mintAmount <= maxMintAmount);
         if (supply < 550) {
             uint256 tokenCount = balanceOf(msg.sender);
-            require(tokenCount + _mintAmount < freeMaxAmount);
+            require(tokenCount + _mintAmount <= freeMaxAmount);
         }
         require(msg.value >= cost * _mintAmount);
     }

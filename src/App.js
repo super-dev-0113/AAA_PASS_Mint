@@ -215,6 +215,7 @@ function App() {
     getData();
   }, [blockchain.account]);
 
+ 
   return (
     <s.Screen>
       <s.Container
